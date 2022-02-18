@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "roboto";
+  src: url(../dist/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf);
+  font-weight: 100 900;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+}
+
+body {
+  font-size: 16px;
+  margin-top: 2rem;
+  color: #fffffe;
+  background: #333;
+  font-family: "roboto";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: "";
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  background: #495371;
+  box-shadow: 2px 2px 5px 2px rgba(255, 255, 255, 0.5);
+}
+body::before {
+  content: "";
+  top: 5px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  background: #74959A;
+  box-shadow: 2px 2px 5px 2px rgba(255, 255, 255, 0.5);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main, aside {
+  margin: 0 1rem;
+}
+
+main {
+  max-width: 600px;
+}
+main h1 {
+  margin-bottom: 2rem;
+}
+
+.main-content p {
+  margin-bottom: 2rem;
+}
+.main-content p:nth-child(1) {
+  font-weight: 100;
+}
+.main-content p:nth-child(2) {
+  font-weight: 200;
+}
+.main-content p:nth-child(3) {
+  font-weight: 300;
+}
+.main-content p:nth-child(4) {
+  font-weight: 400;
+}
+.main-content p:nth-child(5) {
+  font-weight: 500;
+}
+.main-content p:nth-child(6) {
+  font-weight: 600;
+}
+.main-content p:nth-child(7) {
+  font-weight: 700;
+}
+.main-content p:nth-child(8) {
+  font-weight: 800;
+}
+.main-content p:nth-child(9) {
+  font-weight: 900;
+}
+
+aside li {
+  margin-left: 1rem;
+}
+
+/*# sourceMappingURL=main.css.map */
