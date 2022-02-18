@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'roboto';
+  src: url(../dist/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf);
+  font-weight: 100 900;
+}
+
+$roboto: 'roboto';
+
+$dark: #333;
+$light: #fffffe;
+$off-gray: #495371;
+$sea-green: #74959A;
+$light-green: #98B4AA;
+$yellow: #F1E0AC;
+
+$font-weights: (
+  'Thin': 100,
+  'ExtraLight': 200,
+  'Light': 300,
+  'Regular': 400,
+  'Medium': 500,
+  'SemiBold': 600,
+  'Bold': 700,
+  'ExtraBold': 800,
+  'Black': 900
+)
+
