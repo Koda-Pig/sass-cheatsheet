@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "roboto";
   src: url(../dist/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf);
@@ -46,55 +47,74 @@ body::before {
   box-shadow: 2px 2px 5px 2px rgba(255, 255, 255, 0.5);
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
+.🍱 {
+  padding: 5rem;
+  display: grid;
+  margin: 0 auto;
+  gap: 2rem;
+  max-width: 1400px;
+  grid-auto-flow: column;
+  grid-template-areas: "head head head head" "main main decor aside" "foot foot foot foot";
 }
 
-main, aside {
-  margin: 0 1rem;
+.🗿 {
+  grid-area: head;
 }
-
-main {
-  max-width: 600px;
-}
-main h1 {
+.🗿 h1 {
   margin-bottom: 2rem;
 }
 
-.main-content p {
+.🌍 {
+  grid-area: main;
+}
+
+.🍁 {
+  grid-area: decor;
+}
+
+.📚 {
+  grid-area: aside;
+  max-width: 190px;
+  text-align: left;
+}
+.📚 li {
+  list-style: none;
+  margin-right: 1rem;
+}
+.📚 li::after {
+  content: "⦾";
+  margin-left: 0.69rem;
+}
+
+.🖊️ p {
   margin-bottom: 2rem;
 }
-.main-content p:nth-child(1) {
+.🖊️ p:nth-child(1) {
   font-weight: 100;
 }
-.main-content p:nth-child(2) {
+.🖊️ p:nth-child(2) {
   font-weight: 200;
 }
-.main-content p:nth-child(3) {
+.🖊️ p:nth-child(3) {
   font-weight: 300;
 }
-.main-content p:nth-child(4) {
+.🖊️ p:nth-child(4) {
   font-weight: 400;
 }
-.main-content p:nth-child(5) {
+.🖊️ p:nth-child(5) {
   font-weight: 500;
 }
-.main-content p:nth-child(6) {
+.🖊️ p:nth-child(6) {
   font-weight: 600;
 }
-.main-content p:nth-child(7) {
+.🖊️ p:nth-child(7) {
   font-weight: 700;
 }
-.main-content p:nth-child(8) {
+.🖊️ p:nth-child(8) {
   font-weight: 800;
 }
-.main-content p:nth-child(9) {
+.🖊️ p:nth-child(9) {
   font-weight: 900;
-}
-
-aside li {
-  margin-left: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */
