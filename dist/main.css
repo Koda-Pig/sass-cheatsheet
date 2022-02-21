@@ -15,9 +15,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #495371;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
 body {
   font-size: 16px;
-  margin-top: 2rem;
   color: #fffffe;
   background: #333;
   font-family: "roboto";
@@ -31,9 +43,10 @@ body::after {
   width: 40px;
   height: 40px;
   display: block;
-  position: absolute;
+  position: fixed;
+  cursor: pointer;
   background: #495371;
-  box-shadow: 2px 2px 5px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: -4px 6px 5px rgba(0, 0, 0, 0.3);
 }
 body::before {
   content: "";
@@ -42,48 +55,44 @@ body::before {
   width: 50px;
   height: 50px;
   display: block;
-  position: absolute;
+  position: fixed;
+  cursor: pointer;
   background: #74959A;
-  box-shadow: 2px 2px 5px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: -4px 6px 5px rgba(0, 0, 0, 0.3);
 }
 
 .🍱 {
-  padding: 5rem;
+  gap: 2rem;
+  padding: 1rem;
   display: grid;
   margin: 0 auto;
-  gap: 2rem;
-  max-width: 1400px;
+  max-width: 1200px;
   grid-auto-flow: column;
-  grid-template-areas: "head head head head" "main main decor aside" "foot foot foot foot";
+  grid-template-areas: "head head head head" "main main main aside" "foot foot foot foot";
+}
+@media (max-width: 1024px) {
+  .🍱 {
+    grid-template-areas: "head" "main" "aside" "foot";
+  }
 }
 
 .🗿 {
   grid-area: head;
 }
 .🗿 h1 {
+  line-height: 1;
+  text-align: center;
+  color: transparent;
   margin-bottom: 2rem;
+  font-size: clamp(8vw, 9rem, 30vw);
+  background: url("../dist/metatron-inverted.jpg") no-repeat center top;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: cover;
 }
 
 .🌍 {
   grid-area: main;
-}
-
-.🍁 {
-  grid-area: decor;
-}
-
-.📚 {
-  grid-area: aside;
-  max-width: 190px;
-  text-align: left;
-}
-.📚 li {
-  list-style: none;
-  margin-right: 1rem;
-}
-.📚 li::after {
-  content: "⦾";
-  margin-left: 0.69rem;
 }
 
 .🖊️ p {
@@ -115,6 +124,41 @@ body::before {
 }
 .🖊️ p:nth-child(9) {
   font-weight: 900;
+}
+
+.📷 {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: clamp(160px, 30vw, 450px);
+}
+@media (max-width: 425px) {
+  .📷 {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+}
+
+.📚 {
+  width: 100%;
+  padding: 1rem;
+  grid-area: aside;
+  text-align: right;
+  height: min-content;
+  border-radius: 0.2rem;
+  background-size: 100% 100%;
+  background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  background-image: radial-gradient(49% 81% at 45% 47%, #04293A 0%, #073AFF00 100%), radial-gradient(113% 91% at 17% -2%, #04293A 1%, #FF000000 99%), radial-gradient(142% 91% at 83% 7%, #064663 1%, #FF000000 99%), radial-gradient(142% 91% at -6% 74%, #160040 1%, #FF000000 99%), radial-gradient(142% 91% at 111% 84%, #1F1D36 0%, #1F1D36 100%);
+  box-shadow: 10px 10px 10px rgba(73, 83, 113, 0.4);
+}
+.📚 li {
+  list-style: none;
+  margin-right: 1rem;
+}
+.📚 li::after {
+  content: "⦾";
+  margin-left: 0.69rem;
 }
 
 /*# sourceMappingURL=main.css.map */

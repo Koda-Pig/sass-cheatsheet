@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'roboto';
-  src: url(../dist/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf);
-  font-weight: 100 900;
-}
-
 $roboto: 'roboto';
 
 $dark: #333;
@@ -12,6 +6,8 @@ $off-gray: #495371;
 $sea-green: #74959A;
 $light-green: #98B4AA;
 $yellow: #F1E0AC;
+
+$mobile: 425px;
 
 $font-weights: (
   'Thin': 100,
@@ -23,5 +19,61 @@ $font-weights: (
   'Bold': 700,
   'ExtraBold': 800,
   'Black': 900
-)
+);
 
+@font-face {
+  font-family: 'roboto';
+  src: url(../dist/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf);
+  font-weight: 100 900;
+}
+
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+@mixin bg-gradient {
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+  background-image: radial-gradient(49% 81% at 45% 47%, #041C32 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #04293A 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #1F1D36 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #1C0C5B 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #150050 0%, #261C2C 100%);
+}
+
+@mixin card-gradient {
+  background-size: 100% 100%;
+  background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+  background-image: radial-gradient(49% 81% at 45% 47%, #04293A 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #04293A 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #064663 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #160040 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #1F1D36 0%, #1F1D36 100%);
+}
+
+@mixin block($size, $color) {
+  content: '';
+  top: 5px;
+  right: 5px;
+  width: $size;
+  height: $size;
+  display: block;
+  position: fixed;
+  cursor: pointer;
+  background: $color;
+  box-shadow: -4px 6px 5px rgba(black, 0.3);
+}
+
+@mixin theme($light-theme) {
+  @if $light-theme {
+    background-color: lighten($dark, 100%);
+    color: darken($light, 100%);
+  }
+}
+
+@mixin heading-theme($light-theme) {
+  @if $light-theme {
+    background: url("../dist/metatron.jpg") no-repeat center top;
+  } @else {
+    background: url("../dist/metatron-inverted.jpg") no-repeat center top;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}

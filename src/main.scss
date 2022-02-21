@@ -1,13 +1,25 @@
+// mixins and functions are similar,
+// but functions are used to return values,
+// while mixins define styles
+
+
 @use 'variables' as var;
 @use 'resets' as reset;
 
-@function weight($weight-name) {
-  @return map-get(var.$font-weights, $weight-name);
+// scrollbar customisation
+::-webkit-scrollbar-track {
+  background: var.$dark;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var.$off-gray;
+  border-radius: 20px;
+}
+::-webkit-scrollbar {
+  width: 12px;
 }
 
 body {
   font-size: 16px;
-  margin-top: 2rem;
   color: var.$light;
   background: var.$dark;
   font-family: var.$roboto;
@@ -15,47 +27,46 @@ body {
   -webkit-font-smoothing: antialiased;
 
   &::after {
-    content: '';
-    top: 5px;
-    right: 5px;
-    width: 40px;
-    height: 40px;
-    display: block;
-    position: absolute;
-    background: var.$off-gray;
-    box-shadow: 2px 2px 5px 2px rgba(white, 0.5);
+    @include var.block(40px, var.$off-gray);
   }
 
   &::before {
-    content: '';
-    top: 5px;
-    right: 5px;
-    width: 50px;
-    height: 50px;
-    display: block;
-    position: absolute;
-    background: var.$sea-green;
-    box-shadow: 2px 2px 5px 2px rgba(white, 0.5);
+    @include var.block(50px, var.$sea-green);
   }
 }
 
 .🍱 {
-  padding: 5rem;
+  gap: 2rem;
+  padding: 1rem;
   display: grid;
   margin: 0 auto;
-  gap: 2rem;
-  max-width: 1400px;
+  max-width: 1200px;
   grid-auto-flow: column;
   grid-template-areas:  "head head head head"
-                        "main main decor aside"
+                        "main main main aside"
                         "foot foot foot foot";
+
+  @media (max-width: 1024px) {
+    grid-template-areas:  "head"
+                          "main"
+                          "aside"
+                          "foot";
+  }
 }
 
 .🗿 {
   grid-area: head;
 
   h1 {
+    line-height: 1;
+    text-align: center;
+    color: transparent;
     margin-bottom: 2rem;
+    font-size: clamp(8vw, 9rem, 30vw);
+    @include var.heading-theme($light-theme: false);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: cover;
   }
 }
 
@@ -63,15 +74,64 @@ body {
   grid-area: main;
 }
 
-.🍁 {
-  grid-area: decor;
+.🖊️ {
+  p {
+    margin-bottom: 2rem;
+  
+    &:nth-child(1) {
+      font-weight: var.weight('Thin');
+    }
+    &:nth-child(2) {
+      font-weight: var.weight('ExtraLight');
+    }  
+    &:nth-child(3) {
+      font-weight: var.weight('Light');
+    }  
+    &:nth-child(4) {
+      font-weight: var.weight('Regular');
+    }  
+    &:nth-child(5) {
+      font-weight: var.weight('Medium');
+    }  
+    &:nth-child(6) {
+      font-weight: var.weight('SemiBold');
+    }  
+    &:nth-child(7) {
+      font-weight: var.weight('Bold');
+    }  
+    &:nth-child(8) {
+      font-weight: var.weight('ExtraBold');
+    }  
+    &:nth-child(9) {
+      font-weight: var.weight('Black');
+    }
+  }
+}
+
+.📷 {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: clamp(160px, 30vw, 450px);
+
+  // can use this in place of media query
+  @include var.mobile {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 1rem;
+  }
 }
 
 .📚 {
+  width: 100%;
+  padding: 1rem;
   grid-area: aside;
-  max-width: 190px;
-  text-align: left;
-
+  text-align: right;
+  height: min-content;
+  border-radius: 0.2rem;
+  @include var.card-gradient;
+  box-shadow: 10px 10px 10px rgba(var.$off-gray, 0.4);
+  
   li {
     list-style: none;
     margin-right: 1rem;
@@ -83,36 +143,6 @@ body {
   }
 }
 
-.🖊️ {
-  p {
-    margin-bottom: 2rem;
-  
-    &:nth-child(1) {
-      font-weight: weight('Thin')
-    }
-    &:nth-child(2) {
-      font-weight: weight('ExtraLight');
-    }  
-    &:nth-child(3) {
-      font-weight: weight('Light');
-    }  
-    &:nth-child(4) {
-      font-weight: weight('Regular');
-    }  
-    &:nth-child(5) {
-      font-weight: weight('Medium');
-    }  
-    &:nth-child(6) {
-      font-weight: weight('SemiBold');
-    }  
-    &:nth-child(7) {
-      font-weight: weight('Bold');
-    }  
-    &:nth-child(8) {
-      font-weight: weight('ExtraBold');
-    }  
-    &:nth-child(9) {
-      font-weight: weight('Black');
-    }
-  }
+.light {
+  @include var.theme($light-theme: false);
 }
